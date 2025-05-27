@@ -1,6 +1,6 @@
-import { FlatList, Text, Pressable } from 'react-native';
+import { View, Text, FlatList, Pressable } from 'react-native';
+import  { tareas } from '../../constants/tareas';
 import { useRouter } from 'expo-router';
-import { tareas }  from '../constants/tareas';
 
 export default function Tareas() {
   const router = useRouter();

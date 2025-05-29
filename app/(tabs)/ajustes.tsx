@@ -1,12 +1,12 @@
 import { View, Button } from 'react-native';
-import { useRouter } from 'expo-router';
+import { useAuth } from '../../contexts/authContext';
 
-export default function Ajustes() {
-  const router = useRouter();
+export default function AjustesScreen() {
+  const { logout } = useAuth();
 
   return (
     <View style={{ padding: 20 }}>
-      <Button title="Cerrar sesión" onPress={() => router.replace('/')} />
+      <Button title="Cerrar sesión" onPress={logout} />
     </View>
   );
 }

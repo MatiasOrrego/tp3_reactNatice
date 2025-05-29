@@ -1,10 +1,26 @@
 import { Stack } from 'expo-router';
+import { useAuth, AuthProvider } from '../contexts/authContext';
 
-export default function RootLayout() {
+// Este componente controla el enrutamiento según la autenticación
+function RootNavigation() {
+  const { isAuthenticated } = useAuth();
+
   return (
     <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="index" />
-      <Stack.Screen name="(tabs)" />
+      {isAuthenticated ? (
+        <Stack.Screen name="(tabs)" /> // Ruta protegida
+      ) : (
+        <Stack.Screen name="login" /> // Ruta pública
+      )}
     </Stack>
+  );
+}
+
+// Este es el root layout que provee el contexto
+export default function RootLayout() {
+  return (
+    <AuthProvider>
+      <RootNavigation />
+    </AuthProvider>
   );
 }

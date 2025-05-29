@@ -1,6 +1,6 @@
-import { View, Text, FlatList, Pressable } from 'react-native';
-import  { tareas } from '../../constants/tareas';
+import { FlatList, Text, Pressable, View } from 'react-native';
 import { useRouter } from 'expo-router';
+import { tareas } from '../../constants/tareas';
 
 export default function Tareas() {
   const router = useRouter();
@@ -11,7 +11,9 @@ export default function Tareas() {
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => (
         <Pressable onPress={() => router.push(`/tareas/${item.id}`)}>
-          <Text style={{ fontSize: 20, padding: 10 }}>{item.titulo}</Text>
+          <View style={{ padding: 15 }}>
+            <Text style={{ fontSize: 18 }}>{item.titulo}</Text>
+          </View>
         </Pressable>
       )}
     />
